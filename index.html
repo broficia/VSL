@@ -2,122 +2,172 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Monaia Ajuda</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Monaia Ajuda</title>
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #000000;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
-            color: #FFFFFF;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+<style>
 
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            padding: 30px 0 10px 0;
-            letter-spacing: -1px;
-            background: linear-gradient(90deg, #FFFFFF, #D1D1D6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    /* ======== RESET ======== */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        .headline {
-            font-size: 30px;
-            text-align: center;
-            font-weight: 700;
-            max-width: 700px;
-            line-height: 1.2;
-            margin-top: 10px;
-        }
+    body {
+        background: radial-gradient(circle at top, #0a0a0c, #000000 70%);
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #ffffff;
+        padding-bottom: 80px;
+        overflow-x: hidden;
+    }
 
-        .subtext {
-            font-size: 16px;
-            text-align: center;
-            max-width: 700px;
-            opacity: 0.8;
-            margin-top: 12px;
-            margin-bottom: 25px;
-        }
+    /* ======== LOGO ======== */
+    .logo {
+        font-size: 34px;
+        font-weight: 800;
+        margin-top: 32px;
+        letter-spacing: -1.2px;
+        background: linear-gradient(90deg, #eaeaea, #ffffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0px 2px 8px rgba(255,255,255,0.12));
+    }
 
-        .video-container {
-            width: 100%;
-            max-width: 850px;
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 14px;
-            box-shadow: 0px 0px 80px rgba(0, 122, 255, 0.10),
-                        0px 0px 15px rgba(255, 255, 255, 0.05);
-        }
+    /* ======== HEADLINE ======== */
+    .headline {
+        margin-top: 26px;
+        font-size: 36px;
+        font-weight: 800;
+        text-align: center;
+        line-height: 1.1;
+        max-width: 780px;
+        background: linear-gradient(180deg, #FFFFFF, #D1D1D6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0px 4px 10px rgba(255,255,255,0.1));
+        padding: 0px 15px;
+    }
 
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
+    /* ======== SUB ======== */
+    .subtext {
+        font-size: 18px;
+        text-align: center;
+        max-width: 680px;
+        opacity: 0.9;
+        margin-top: 14px;
+        color: #C7C7CC;
+        line-height: 1.4;
+        font-weight: 400;
+        padding: 0px 14px;
+    }
 
-        .cta {
-            margin-top: 40px;
-            padding: 18px 50px;
-            border-radius: 14px;
-            background: #007AFF;
-            color: #FFF;
-            font-size: 18px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.3s;
-            box-shadow: 0px 8px 25px rgba(0, 122, 255, 0.30);
-        }
+    /* ======== VIDEO ======== */
+    .video-wrapper {
+        margin-top: 42px;
+        width: 100%;
+        max-width: 900px;
+        position: relative;
+        padding-bottom: 56.25%;
+        border-radius: 22px;
+        overflow: hidden;
+        background: rgba(255,255,255,0.06);
+        backdrop-filter: blur(12px);
+        box-shadow:
+            0px 0px 40px rgba(0,122,255,0.12),
+            0px 0px 12px rgba(255,255,255,0.04),
+            inset 0px 0px 12px rgba(255,255,255,0.05);
+    }
 
-        .cta:hover {
-            filter: brightness(1.2);
-            transform: scale(1.02);
-        }
-    </style>
+    .video-wrapper iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* ======== CTA ======== */
+    .cta-container {
+        margin-top: 48px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .cta {
+        background: linear-gradient(90deg, #007AFF, #0F84FF);
+        padding: 20px 65px;
+        border-radius: 16px;
+        font-size: 19px;
+        font-weight: 600;
+        color: #FFFFFF;
+        text-decoration: none;
+        box-shadow: 0px 8px 30px rgba(0,122,255,0.35);
+        transition: 0.25s ease;
+        letter-spacing: 0.4px;
+        transform: translateY(0);
+    }
+
+    .cta:hover {
+        filter: brightness(1.18);
+        transform: translateY(-3px) scale(1.02);
+    }
+
+    .cta:active {
+        transform: translateY(1px) scale(0.99);
+    }
+
+    /* ======== ANIMAÇÃO SUAVE ======== */
+    .fade-in {
+        animation: fadeIn 1.4s ease forwards;
+        opacity: 0;
+    }
+
+    @keyframes fadeIn {
+        0% {opacity:0; transform: translateY(20px);}
+        100% {opacity:1; transform: translateY(0);}
+    }
+
+</style>
 </head>
 
 <body>
 
     <!-- LOGO -->
-    <div class="logo">
+    <div class="logo fade-in" style="animation-delay:0.1s">
         Monaia Ajuda
     </div>
 
     <!-- HEADLINE -->
-    <div class="headline">
+    <div class="headline fade-in" style="animation-delay:0.25s">
         A forma mais simples de transformar sua vida em 2025
     </div>
 
-    <!-- SUBTEXTO -->
-    <div class="subtext">
+    <!-- SUB -->
+    <div class="subtext fade-in" style="animation-delay:0.45s">
         Assista o vídeo abaixo e descubra como começar ainda hoje.
     </div>
 
-    <!-- VÍDEO -->
-    <div class="video-container">
+    <!-- VIDEO -->
+    <div class="video-wrapper fade-in" style="animation-delay:0.65s">
         <iframe src="https://www.youtube.com/embed/8Xqp3H9Te8s?si=15VFl_Qn2iDb8lMy"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
         </iframe>
     </div>
 
-    <!-- BOTÃO CTA -->
-    <a href="#" class="cta">
-        QUERO A AJUDA DA MONAIA
-    </a>
+    <!-- CTA -->
+    <div class="cta-container fade-in" style="animation-delay:0.85s">
+        <a href="https://ambienteseguro.org.ua/c/0d14e2530a" class="cta">
+            QUERO A AJUDA DA MONAIA
+        </a>
+    </div>
 
 </body>
 
