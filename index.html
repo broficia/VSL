@@ -1,133 +1,207 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Monaia Ajuda</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Monaia Ajuda</title>
 
-    <!-- Fonte Apple -->
-    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'SF Pro Display', sans-serif;
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        body {
-            background: #EDEDED; /* cinza apple */
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-            animation: fadeIn 1s ease-in-out;
-        }
+    body {
+        background: radial-gradient(circle at top, #3A3A3C, #1C1C1E 70%);
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #ffffff;
+        padding-bottom: 80px;
+        overflow-x: hidden;
+        min-height: 100vh;
+        position: relative;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    /* Light particles (Apple style) */
+    .particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
+    }
 
-        .container {
-            max-width: 950px;
-            width: 100%;
-            padding: 40px;
-            border-radius: 40px;
+    .particles span {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(255,255,255,0.25);
+        border-radius: 50%;
+        animation: float 8s infinite ease-in-out;
+    }
 
-            /* Glassmorphism */
-            background: rgba(255, 255, 255, 0.60);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
+    @keyframes float {
+        0% { transform: translateY(0) scale(1); opacity: 0.9;}
+        50% { transform: translateY(-140px) scale(1.4); opacity: 0.7;}
+        100% { transform: translateY(0) scale(1); opacity: 0.9;}
+    }
 
-            border: 1px solid rgba(255,255,255,0.7);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-            text-align: center;
-        }
+    .logo {
+        font-size: 34px;
+        font-weight: 800;
+        margin-top: 32px;
+        letter-spacing: -1.2px;
+        background: linear-gradient(90deg, #EAEAEA, #FFFFFF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0px 2px 6px rgba(255,255,255,0.07));
+        z-index: 1;
+    }
 
-        .logo {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 25px;
-            letter-spacing: -1px;
-            background: linear-gradient(90deg, #d4af37, #c1921c);
-            -webkit-background-clip: text;
-            color: transparent;
-        }
+    .headline {
+        margin-top: 26px;
+        font-size: 36px;
+        font-weight: 800;
+        text-align: center;
+        line-height: 1.1;
+        max-width: 780px;
+        background: linear-gradient(180deg, #FFFFFF, #D1D1D6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        padding: 0px 15px;
+        z-index: 1;
+    }
 
-        h1 {
-            font-size: 40px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #000;
-        }
+    .subtext {
+        font-size: 18px;
+        text-align: center;
+        max-width: 680px;
+        opacity: 0.88;
+        margin-top: 14px;
+        color: #C7C7CC;
+        line-height: 1.4;
+        padding: 0px 14px;
+        z-index: 1;
+    }
 
-        p {
-            font-size: 20px;
-            margin-bottom: 32px;
-            opacity: 0.8;
-        }
+    .video-wrapper {
+        margin-top: 42px;
+        width: 100%;
+        max-width: 900px;
+        position: relative;
+        padding-bottom: 56.25%;
+        border-radius: 22px;
+        overflow: hidden;
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(14px);
+        box-shadow:
+            0px 0px 40px rgba(255,255,255,0.06),
+            0px 0px 12px rgba(255,255,255,0.04),
+            inset 0px 0px 12px rgba(255,255,255,0.08);
+        z-index: 1;
+    }
 
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            border-radius: 28px;
-            overflow: hidden;
-            margin-bottom: 32px;
-            box-shadow: 0 14px 32px rgba(0,0,0,0.15);
-            border: 1px solid rgba(255,255,255,0.6);
-        }
+    .video-wrapper iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
 
-        .video-wrapper iframe {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+    .cta-container {
+        margin-top: 48px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        z-index: 1;
+    }
 
-        .cta-btn {
-            display: inline-block;
-            padding: 18px 60px;
-            font-size: 22px;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 50px;
-            color: #000;
+    .cta {
+        background: linear-gradient(90deg, #FFD60A, #FFC300);
+        padding: 20px 65px;
+        border-radius: 16px;
+        font-size: 19px;
+        font-weight: 700;
+        color: #1C1C1E;
+        text-decoration: none;
+        box-shadow: 0px 10px 30px rgba(255,214,10,0.35);
+        transition: 0.25s ease;
+        letter-spacing: -0.3px;
+        transform: translateY(0);
+    }
 
-            /* Ouro com glow */
-            background: linear-gradient(90deg,#d4af37,#c1921c);
-            box-shadow: 0 12px 24px rgba(212,175,55,0.4), 0 0 25px rgba(212,175,55,0.5);
-            transition: 0.35s;
-        }
+    .cta:hover {
+        filter: brightness(1.08);
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0px 15px 45px rgba(255,214,10,0.5);
+    }
 
-        .cta-btn:hover {
-            transform: scale(1.05);
-            filter: brightness(1.08);
-            box-shadow: 0 18px 32px rgba(212,175,55,0.55), 0 0 35px rgba(212,175,55,0.75);
-        }
-    </style>
+    .cta:active {
+        transform: translateY(1px) scale(0.99);
+    }
+
+    .fade-in {
+        animation: fadeIn 1.4s ease forwards;
+        opacity: 0;
+    }
+
+    @keyframes fadeIn {
+        0% {opacity:0; transform: translateY(20px);}
+        100% {opacity:1; transform: translateY(0);}
+    }
+
+</style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="logo">Monaia Ajuda</div>
 
-        <h1>Título Premium Aqui</h1>
-        <p>Texto impactante que você vai trocar depois.</p>
+    <!-- Particles -->
+    <div class="particles">
+        <span style="top:10%; left:20%; animation-delay:0s;"></span>
+        <span style="top:30%; left:60%; animation-delay:2s;"></span>
+        <span style="top:70%; left:40%; animation-delay:1s;"></span>
+        <span style="top:50%; left:80%; animation-delay:3s;"></span>
+        <span style="top:80%; left:10%; animation-delay:4s;"></span>
+    </div>
 
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/8Xqp3H9Te8s?si=15VFl_Qn2iDb8lMy"
-                title="YouTube Player"
+    <!-- LOGO -->
+    <div class="logo fade-in" style="animation-delay:0.1s">
+        Monaia Ajuda
+    </div>
+
+    <!-- HEADLINE -->
+    <div class="headline fade-in" style="animation-delay:0.25s">
+        Seu próximo passo começa agora.
+    </div>
+
+    <!-- SUB -->
+    <div class="subtext fade-in" style="animation-delay:0.45s">
+        Assista o vídeo abaixo e entenda como tudo funciona.
+    </div>
+
+    <!-- VIDEO -->
+    <div class="video-wrapper fade-in" style="animation-delay:0.65s">
+        <iframe src="https://www.youtube.com/embed/8Xqp3H9Te8s?si=15VFl_Qn2iDb8lMy"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>
-            </iframe>
-        </div>
+        </iframe>
+    </div>
 
-        <a href="https://ambienteseguro.org.ua/c/0d14e2530a" class="cta-btn">
-            QUERO COMEÇAR AGORA
+    <!-- CTA -->
+    <div class="cta-container fade-in" style="animation-delay:0.85s">
+        <a href="https://ambienteseguro.org.ua/c/0d14e2530a" class="cta">
+            CONTINUAR
         </a>
     </div>
+
 </body>
+
 </html>
