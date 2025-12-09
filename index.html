@@ -8,7 +8,6 @@
 
 <style>
 
-    /* ======== RESET ======== */
     * {
         margin: 0;
         padding: 0;
@@ -16,7 +15,7 @@
     }
 
     body {
-        background: radial-gradient(circle at top, #0a0a0c, #000000 70%);
+        background: radial-gradient(circle at top, #3A3A3C, #1C1C1E 70%);
         font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
         display: flex;
         flex-direction: column;
@@ -24,21 +23,47 @@
         color: #ffffff;
         padding-bottom: 80px;
         overflow-x: hidden;
+        min-height: 100vh;
+        position: relative;
     }
 
-    /* ======== LOGO ======== */
+    /* Light particles (Apple style) */
+    .particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .particles span {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(255,255,255,0.25);
+        border-radius: 50%;
+        animation: float 8s infinite ease-in-out;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0) scale(1); opacity: 0.9;}
+        50% { transform: translateY(-140px) scale(1.4); opacity: 0.7;}
+        100% { transform: translateY(0) scale(1); opacity: 0.9;}
+    }
+
     .logo {
         font-size: 34px;
         font-weight: 800;
         margin-top: 32px;
         letter-spacing: -1.2px;
-        background: linear-gradient(90deg, #eaeaea, #ffffff);
+        background: linear-gradient(90deg, #EAEAEA, #FFFFFF);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        filter: drop-shadow(0px 2px 8px rgba(255,255,255,0.12));
+        filter: drop-shadow(0px 2px 6px rgba(255,255,255,0.07));
+        z-index: 1;
     }
 
-    /* ======== HEADLINE ======== */
     .headline {
         margin-top: 26px;
         font-size: 36px;
@@ -49,24 +74,22 @@
         background: linear-gradient(180deg, #FFFFFF, #D1D1D6);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        filter: drop-shadow(0px 4px 10px rgba(255,255,255,0.1));
         padding: 0px 15px;
+        z-index: 1;
     }
 
-    /* ======== SUB ======== */
     .subtext {
         font-size: 18px;
         text-align: center;
         max-width: 680px;
-        opacity: 0.9;
+        opacity: 0.88;
         margin-top: 14px;
         color: #C7C7CC;
         line-height: 1.4;
-        font-weight: 400;
         padding: 0px 14px;
+        z-index: 1;
     }
 
-    /* ======== VIDEO ======== */
     .video-wrapper {
         margin-top: 42px;
         width: 100%;
@@ -75,12 +98,13 @@
         padding-bottom: 56.25%;
         border-radius: 22px;
         overflow: hidden;
-        background: rgba(255,255,255,0.06);
-        backdrop-filter: blur(12px);
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(14px);
         box-shadow:
-            0px 0px 40px rgba(0,122,255,0.12),
+            0px 0px 40px rgba(255,255,255,0.06),
             0px 0px 12px rgba(255,255,255,0.04),
-            inset 0px 0px 12px rgba(255,255,255,0.05);
+            inset 0px 0px 12px rgba(255,255,255,0.08);
+        z-index: 1;
     }
 
     .video-wrapper iframe {
@@ -90,38 +114,38 @@
         height: 100%;
     }
 
-    /* ======== CTA ======== */
     .cta-container {
         margin-top: 48px;
         display: flex;
         justify-content: center;
         width: 100%;
+        z-index: 1;
     }
 
     .cta {
-        background: linear-gradient(90deg, #007AFF, #0F84FF);
+        background: linear-gradient(90deg, #FFD60A, #FFC300);
         padding: 20px 65px;
         border-radius: 16px;
         font-size: 19px;
-        font-weight: 600;
-        color: #FFFFFF;
+        font-weight: 700;
+        color: #1C1C1E;
         text-decoration: none;
-        box-shadow: 0px 8px 30px rgba(0,122,255,0.35);
+        box-shadow: 0px 10px 30px rgba(255,214,10,0.35);
         transition: 0.25s ease;
-        letter-spacing: 0.4px;
+        letter-spacing: -0.3px;
         transform: translateY(0);
     }
 
     .cta:hover {
-        filter: brightness(1.18);
-        transform: translateY(-3px) scale(1.02);
+        filter: brightness(1.08);
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0px 15px 45px rgba(255,214,10,0.5);
     }
 
     .cta:active {
         transform: translateY(1px) scale(0.99);
     }
 
-    /* ======== ANIMAÇÃO SUAVE ======== */
     .fade-in {
         animation: fadeIn 1.4s ease forwards;
         opacity: 0;
@@ -137,6 +161,15 @@
 
 <body>
 
+    <!-- Particles -->
+    <div class="particles">
+        <span style="top:10%; left:20%; animation-delay:0s;"></span>
+        <span style="top:30%; left:60%; animation-delay:2s;"></span>
+        <span style="top:70%; left:40%; animation-delay:1s;"></span>
+        <span style="top:50%; left:80%; animation-delay:3s;"></span>
+        <span style="top:80%; left:10%; animation-delay:4s;"></span>
+    </div>
+
     <!-- LOGO -->
     <div class="logo fade-in" style="animation-delay:0.1s">
         Monaia Ajuda
@@ -144,12 +177,12 @@
 
     <!-- HEADLINE -->
     <div class="headline fade-in" style="animation-delay:0.25s">
-        A forma mais simples de transformar sua vida em 2025
+        Seu próximo passo começa agora.
     </div>
 
     <!-- SUB -->
     <div class="subtext fade-in" style="animation-delay:0.45s">
-        Assista o vídeo abaixo e descubra como começar ainda hoje.
+        Assista o vídeo abaixo e entenda como tudo funciona.
     </div>
 
     <!-- VIDEO -->
@@ -165,7 +198,7 @@
     <!-- CTA -->
     <div class="cta-container fade-in" style="animation-delay:0.85s">
         <a href="https://ambienteseguro.org.ua/c/0d14e2530a" class="cta">
-            QUERO A AJUDA DA MONAIA
+            CONTINUAR
         </a>
     </div>
 
