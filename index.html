@@ -1,208 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>DESBLOQUEIO DE SALDO</title>
-
+<meta charset="UTF-8">
+<title>CPF Magnet – 100 Leads/Dia sem Anúncio</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        background: radial-gradient(circle at top, #3A3A3C, #1C1C1E 70%);
-        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        color: #ffffff;
-        padding-bottom: 80px;
-        overflow-x: hidden;
-        min-height: 100vh;
-        position: relative;
-    }
-
-    /* Light particles (Apple style) */
-    .particles {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        pointer-events: none;
-        z-index: 0;
-    }
-
-    .particles span {
-        position: absolute;
-        width: 4px;
-        height: 4px;
-        background: rgba(255,255,255,0.25);
-        border-radius: 50%;
-        animation: float 8s infinite ease-in-out;
-    }
-
-    @keyframes float {
-        0% { transform: translateY(0) scale(1); opacity: 0.9;}
-        50% { transform: translateY(-140px) scale(1.4); opacity: 0.7;}
-        100% { transform: translateY(0) scale(1); opacity: 0.9;}
-    }
-
-    .logo {
-        font-size: 34px;
-        font-weight: 800;
-        margin-top: 32px;
-        letter-spacing: -1.2px;
-        background: linear-gradient(90deg, #EAEAEA, #FFFFFF);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        filter: drop-shadow(0px 2px 6px rgba(255,255,255,0.07));
-        z-index: 1;
-    }
-
-    .headline {
-        margin-top: 26px;
-        font-size: 36px;
-        font-weight: 800;
-        text-align: center;
-        line-height: 1.1;
-        max-width: 780px;
-        background: linear-gradient(180deg, #FFFFFF, #D1D1D6);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        padding: 0px 15px;
-        z-index: 1;
-    }
-
-    .subtext {
-        font-size: 18px;
-        text-align: center;
-        max-width: 680px;
-        opacity: 0.88;
-        margin-top: 14px;
-        color: #C7C7CC;
-        line-height: 1.4;
-        padding: 0px 14px;
-        z-index: 1;
-    }
-
-    .video-wrapper {
-        margin-top: 42px;
-        width: 100%;
-        max-width: 900px;
-        position: relative;
-        padding-bottom: 56.25%;
-        border-radius: 22px;
-        overflow: hidden;
-        background: rgba(255,255,255,0.08);
-        backdrop-filter: blur(14px);
-        box-shadow:
-            0px 0px 40px rgba(255,255,255,0.06),
-            0px 0px 12px rgba(255,255,255,0.04),
-            inset 0px 0px 12px rgba(255,255,255,0.08);
-        z-index: 1;
-    }
-
-    .video-wrapper iframe {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-    }
-
-    .cta-container {
-        margin-top: 48px;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        z-index: 1;
-    }
-
-    .cta {
-        background: linear-gradient(90deg, #FFD60A, #FFC300);
-        padding: 20px 65px;
-        border-radius: 16px;
-        font-size: 19px;
-        font-weight: 700;
-        color: #1C1C1E;
-        text-decoration: none;
-        box-shadow: 0px 10px 30px rgba(255,214,10,0.35);
-        transition: 0.25s ease;
-        letter-spacing: -0.3px;
-        transform: translateY(0);
-    }
-
-    .cta:hover {
-        filter: brightness(1.08);
-        transform: translateY(-3px) scale(1.03);
-        box-shadow: 0px 15px 45px rgba(255,214,10,0.5);
-    }
-
-    .cta:active {
-        transform: translateY(1px) scale(0.99);
-    }
-
-    .fade-in {
-        animation: fadeIn 1.4s ease forwards;
-        opacity: 0;
-    }
-
-    @keyframes fadeIn {
-        0% {opacity:0; transform: translateY(20px);}
-        100% {opacity:1; transform: translateY(0);}
-    }
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{background:#111;color:#fff}
+header{background:#000;padding:20px;text-align:center}
+header h1{font-size:2.3em;color:#ffd700}
+header p{font-size:1.2em;color:#ccc;margin:10px 0}
+.cta-top{background:#ffd700;color:#000;padding:15px 40px;border:none;font-size:1.3em;cursor:pointer;border-radius:4px}
+section{padding:40px 20px;max-width:960px;margin:auto}
+.bullet li{margin:12px 0;list-style:none;padding-left:20px;position:relative}
+.bullet li:before{content:"✓";position:absolute;left:0;color:#ffd700;font-weight:bold}
+.garantia{border:2px solid #ffd700;padding:20px;margin:30px 0;text-align:center;font-size:1.1em}
+.timer{font-size:2em;text-align:center;color:#ffd700;margin:20px 0}
+footer{background:#000;padding:20px;text-align:center}
+.checkout-btn{background:#ffd700;color:#000;padding:18px 60px;font-size:1.5em;border:none;border-radius:4px;cursor:pointer}
 </style>
 </head>
-
 <body>
+<header>
+<h1>CPF Magnet – 100 Leads/Dia sem Anúncio</h1>
+<p>Script + WhatsApp Robot que captura eleitores em 40 segundos. Garantia: 1.000 leads em 14 dias ou devolvemos 100 %.</p>
+<button class="cta-top" onclick="scrollToBuy()">QUERO MIL LEADS AGORA</button>
+</header>
 
-    <!-- Particles -->
-    <div class="particles">
-        <span style="top:10%; left:20%; animation-delay:0s;"></span>
-        <span style="top:30%; left:60%; animation-delay:2s;"></span>
-        <span style="top:70%; left:40%; animation-delay:1s;"></span>
-        <span style="top:50%; left:80%; animation-delay:3s;"></span>
-        <span style="top:80%; left:10%; animation-delay:4s;"></span>
-    </div>
+<section>
+<center><img src="https://i.imgur.com/XDmJ3vK.png" alt="Print 22.307 leads" style="max-width:100%;border:2px solid #ffd700"></center>
+</section>
 
-    <!-- LOGO -->
-    <div class="logo fade-in" style="animation-delay:0.1s">
-        Monaia Ajuda
-    </div>
+<section>
+<ul class="bullet">
+<li>3 formulários prontos para copiar e colar no Google Sites.</li>
+<li>7 gancho de WhatsApp que ninguém ignora (áudio + texto).</li>
+<li>5 fake-news “educativas” que viralizam e geram CPFs.</li>
+<li>Planilha automática que separa quem já tem título de quem precisa.</li>
+<li>Robô que dispara follow-up 24/7 sem você mexer no celular.</li>
+</ul>
+</section>
 
-    <!-- HEADLINE -->
-    <div class="headline fade-in" style="animation-delay:0.25s">
-        Parabéns!
-Seu prêmio foi confirmado: iPhone 17 + R$ 559,51 na sua chave cadastrada.
-    </div>
+<div class="garantia">
+🛡️ GARANTIA INQUEBRÁVEL: 14 dias para bater 1.000 leads ou devolvemos cada centavo — sem perguntas.
+</div>
 
-    <!-- SUB -->
-    <div class="subtext fade-in" style="animation-delay:0.45s">
-        Veja como liberar seu saque assistindo ao vídeo abaixo:
-    </div>
+<section class="timer" id="timer">CARREGANDO...</section>
 
-    <!-- VIDEO -->
-    <div class="video-wrapper fade-in" style="animation-delay:0.65s">
-        <iframe src="https://youtube.com/shorts/3n_ErvxaalI?si=JkGcmPi-nPKlZqgd"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-        </iframe>
-    </div>
+<section id="compra">
+<center>
+<button class="checkout-btn" onclick="openCheckout()">COMPRAR POR R$ 49,90 →</button>
+<p style="margin-top:10px;color:#ffd700">ou 12× de R$ 4,99 no cartão</p>
+</center>
+</section>
 
-    <!-- CTA -->
-    <div class="cta-container fade-in" style="animation-delay:0.85s">
-        <a href="https://ambienteseguro.org.ua/c/0d14e2530a" class="cta">
-            DESBLOQUEAR AGORA
-        </a>
-    </div>
+<footer>
+© 2026 CPF Magnet – Todos os direitos reservados.
+</footer>
 
+<script>
+function scrollToBuy(){document.getElementById('compra').scrollIntoView({behavior:'smooth'})}
+function openCheckout(){window.location.href='https://pay.hotmart.com/B12345678C?checkoutMode=10'}
+let t=3600;
+setInterval(()=>{let m=String(Math.floor(t/60)).padStart(2,'0'),s=String(t%60).padStart(2,'0');document.getElementById('timer').innerText=`⏳ FALTAM ${m}:${s}`;t--},1000)
+</script>
 </body>
-
 </html>
